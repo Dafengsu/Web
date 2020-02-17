@@ -77,17 +77,11 @@
             <version>1.12.2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina -->
         <dependency>
             <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-servlet-api</artifactId>
-            <version>9.0.21</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jsp-api</artifactId>
-            <version>9.0.21</version>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>9.0.31</version>
             <scope>provided</scope>
         </dependency>
 

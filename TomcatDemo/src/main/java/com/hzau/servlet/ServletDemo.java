@@ -5,7 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 
 
-@WebServlet(urlPatterns = "/demo")
+@WebServlet(urlPatterns = {"/demo","*.dot"})
 public class ServletDemo implements Servlet {
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
