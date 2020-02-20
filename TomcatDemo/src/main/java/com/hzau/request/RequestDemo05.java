@@ -1,5 +1,6 @@
 package com.hzau.request;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,8 +13,8 @@ import java.io.IOException;
  * @author: su
  * @date: 2020/2/16
  */
-@WebServlet("/request03")
-public class RequestDemo03 extends HttpServlet {
+@WebServlet("/request05")
+public class RequestDemo05 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -21,11 +22,8 @@ public class RequestDemo03 extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username");
-        System.out.println(username);
-        String[] hobbies = req.getParameterValues("hobby");
-        for (String hobby : hobbies) {
-            System.out.println(hobby);
-        }
+        System.out.println("demo05被访问了。。。");
+        req.setAttribute("msg", "hello");
+        req.getRequestDispatcher("/request06").forward(req, resp);
     }
 }

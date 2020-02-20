@@ -12,8 +12,8 @@ import java.io.IOException;
  * @author: su
  * @date: 2020/2/16
  */
-@WebServlet("/request03")
-public class RequestDemo03 extends HttpServlet {
+@WebServlet("/request06")
+public class RequestDemo06 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -21,11 +21,7 @@ public class RequestDemo03 extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username");
-        System.out.println(username);
-        String[] hobbies = req.getParameterValues("hobby");
-        for (String hobby : hobbies) {
-            System.out.println(hobby);
-        }
+        System.out.println("demo06被访问了。。。");
+        System.out.println(req.getAttribute("msg"));
     }
 }
