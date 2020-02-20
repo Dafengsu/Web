@@ -7,6 +7,7 @@ import com.hzau.domain.User;
 import com.hzau.service.UserService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author su
@@ -56,17 +57,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageBean<User> findUserByPage(int currentPage, int rows) {
+    public PageBean<User> findUserByPage(int currentPage, int rows, Map<String, String[]> condition) {
 
         PageBean<User> pb = new PageBean<>();
         pb.setCurrentPage(currentPage);
         pb.setRows(rows);
         //调查总记录数
-        int totalCount = dao.findTotalCount();
+        int totalCount = dao.findTotalCount(condition);
         pb.setTotalCount(totalCount);
         //查询List集合
         int start = (currentPage - 1) * rows;
-        List<User> list = dao.findByPage(start, rows);
+        List<User> list = dao.findByPage(start, rows,condition);
         pb.setList(list);
         int totalPage = totalCount % rows == 0
                 ? totalCount / rows : totalCount / rows + 1;

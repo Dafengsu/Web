@@ -5,8 +5,6 @@ import com.hzau.domain.User;
 import com.hzau.service.UserService;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * @author su
  * @description
@@ -16,7 +14,7 @@ public class UserServiceImplTest {
     private UserService userService = new UserServiceImpl();
     @Test
     public void findUserByPage() {
-        PageBean<User> pb = userService.findUserByPage(1, 5);
-        System.out.println(pb);
+       /* PageBean<User> pb = userService.findUserByPage(1, 5, condition);
+        System.out.println(pb);*/
     }
 }

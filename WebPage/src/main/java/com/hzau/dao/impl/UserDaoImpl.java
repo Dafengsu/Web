@@ -6,7 +6,11 @@ import com.hzau.utils.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import static com.hzau.utils.SqlUtils.conditionSqlAppend;
 
 /**
  * @author su
@@ -64,17 +68,35 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public int findTotalCount() {
+    public int findTotalCount(Map<String, String[]> condition) {
         //language=MySQL
-        String sql = "SELECT COUNT(*) FROM USER";
-        return template.queryForObject(sql, Integer.class);
+        String sql = "SELECT COUNT(*) FROM USER WHERE 1 = 1";
+        StringBuilder sb = new StringBuilder(sql);
+        //定义参数的集合
+        List<Object> params = new ArrayList<>();
+        //遍历map
+        conditionSqlAppend(condition, sb, params);
+        System.out.println(sb.toString());
+        System.out.println(params);
+        return template.queryForObject(sb.toString(), Integer.class, params.toArray());
     }
 
+
+
     @Override
-    public List<User> findByPage(int start, int rows) {
-        String sql = "SELECT * FROM USER LIMIT ? ,?";
-        return template.query(sql,
-                new BeanPropertyRowMapper<>(User.class), start, rows);
+    public List<User> findByPage(int start, int rows, Map<String, String[]> condition) {
+        //language=MySQL
+        String sql = "SELECT * FROM USER WHERE 1 = 1";
+        StringBuilder sb = new StringBuilder(sql);
+        //定义参数的集合
+        List<Object> params = new ArrayList<>();
+        conditionSqlAppend(condition, sb, params);
+        sb.append(" LIMIT ?, ?");
+        System.out.println(sb.toString());
+        params.add(start);
+        params.add(rows);
+        return template.query(sb.toString(),
+                new BeanPropertyRowMapper<>(User.class), params.toArray());
     }
 
 }

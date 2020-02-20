@@ -4,6 +4,7 @@ import com.hzau.domain.PageBean;
 import com.hzau.domain.User;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author su
@@ -31,5 +32,5 @@ public interface UserService {
 
     public void delUsersById(String[] ids);
 
-    public PageBean<User> findUserByPage(int currentPage, int rows);
+    public PageBean<User> findUserByPage(int currentPage, int rows, Map<String, String[]> condition);
 }
