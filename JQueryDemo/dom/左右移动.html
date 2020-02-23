@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script  src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+
+		<style>
+			#leftName , #btn,#rightName{
+				float: left;
+				width: 100px;
+				height: 300px;
+			}
+			#toRight,#toLeft{
+				margin-top:100px ;
+				margin-left:30px;
+				width: 50px;
+			}
+
+			.border{
+				height: 500px;
+				padding: 100px;
+			}
+		</style>
+
+		<script>
+			$(function () {
+				var newVar = $("#leftName > option")[1];
+				// alert($(newVar).html());
+				// alert("attr "+$(newVar).attr("selected"));
+				alert("attr "+$(newVar).attr("selected","true"));
+				// alert("attr "+$(newVar).attr("selected"));
+				// alert("prop "+$(newVar).prop("selected"));
+				// alert("prop "+$(newVar).prop("selected", "true"));
+				// alert("prop "+$(newVar).prop("selected"));
+				$("#leftName > option").click(function () {
+					/*$(this).prop("selected", "true");*/
+					alert("attr "+$(this).prop("selected"))
+				});
+				$("#toRight").click(function () {
+					var $selected = $("#leftName >option:selected");
+					$("#rightName").append($selected)
+
+				});
+				$("#toLeft").click(function () {
+					$("#leftName").append($("#rightName >option:selected"))
+				});
+
+			});
+
+			
+
+		</script>
+
+
+
+	</head>
+	<body>
+		<div class="border">
+			<select id="leftName" multiple="multiple">
+				<option>张三</option>
+				<option>李四</option>
+				<option>王五</option>
+				<option>赵六</option>
+			</select>
+			<div id="btn">
+				<input type="button" id="toRight" value="-->"><br>
+				<input type="button" id="toLeft" value="<--">
+
+			</div>
+
+			<select id="rightName" multiple="multiple">
+				<option>钱七</option>
+			</select>
+
+		</div>
+
+
+	</body>
+</html>

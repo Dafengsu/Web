@@ -19,17 +19,17 @@ public class UserDaoImplTest {
         assertNotNull(user);
     }
 
-    @Test
-    public void addUser() {
-        User user = new User();
-        user.setName("wuli");
-        user.setGender("男");
-        user.setAddress("afa");
-        user.setQq("q1231");
-        user.setEmail("123131");
-        user.setAge(18);
-        userDao.addUser(user);
-    }
+//    @Test
+//    public void addUser() {
+//        User user = new User();
+//        user.setName("wuli");
+//        user.setGender("男");
+//        user.setAddress("afa");
+//        user.setQq("q1231");
+//        user.setEmail("123131");
+//        user.setAge(18);
+//        userDao.addUser(user);
+//    }
 
 
 

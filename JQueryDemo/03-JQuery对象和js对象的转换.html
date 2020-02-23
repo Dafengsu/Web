@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义js框架</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+<div id="div1">div1...</div>
+    <div id="div2">div2...</div>
+    <script>
+        var divs = document.getElementsByTagName("div");
+        alert(divs);
+        for (let div of divs) {
+            div.innerHTML ="aaa"
+        }
+        var $div = $("div");
+        alert($div);
+        $div.html("bbb");
+        alert($(divs));
+        $(divs).html("ccc");
+        $div[1].innerHTML = "ddd";
+    </script>
+</body>
+</html>

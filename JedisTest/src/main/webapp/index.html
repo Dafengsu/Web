@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+        $(function () {
+            //发送ajax请求加载所有的数据
+            $.get("findProvinceServlet", {}, function (data) {
+                //1.获取selected
+                var province = $("#province");
+                //2.遍历json数组
+                $(data).each(function () {
+                    //3.创建<option>追加标签
+                    var option = "<option name=''" + this.id + ">" + this.name + "</optioni>";
+                    //4.调用select的append追加标签
+                    province.append(option);
+                });
+
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <select id="province">
+        <option>--请选择省份--</option>
+    </select>
+</body>
+</html>
